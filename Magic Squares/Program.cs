@@ -15,10 +15,11 @@ class Program
                 //PrintArray(theMatrix);
                 bool rowsAreMagic = PerformRowCheck(theMatrix);
                 bool colsAreMagic = PerformColCheck(theMatrix);
+                bool diagsAreMagic = PerformDiagCheck(theMatrix);
 
                 counter++;
 
-                if (rowsAreMagic && colsAreMagic)
+                if (rowsAreMagic && colsAreMagic && diagsAreMagic)
                 {
                     Console.WriteLine("Squares produced: " + counter);
                     Console.WriteLine("Magic square found");
@@ -115,5 +116,23 @@ class Program
 
             return isMagic;
         }
+
+        static bool PerformDiagCheck(int[,] tempArray)
+        {
+            bool isMagic = true;
+            // TODO: Check if each diagonal adds up to 15
+
+            if (tempArray[0, 0] + tempArray[1, 1] + tempArray[2, 2] != 15)
+            {
+                isMagic = false;
+            }
+            if (tempArray[0, 2] + tempArray[1, 1] + tempArray[2, 0] != 15)
+            {
+                isMagic = false;
+            }
+
+            return isMagic;
+        }
+
     }
 }
